@@ -1,0 +1,116 @@
+{
+  "name": "df2-skeleton-module",
+  "version": "0.0.0",
+  "description": "Delivery Flow 2 skeleton module",
+  "main": "dist/bundle.js",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build:base": "node_modules/webpack/bin/webpack.js --process",
+    "clean:dist": "rm -rf ./dist",
+    "check": "npm run lint && npm run test && npm run build",
+    "prebuild": "npm run clean:dist",
+    "build": "bash ./scripts/build.sh",
+    "build:dev": "bash ./scripts/build.dev.sh",
+    "lint": "./node_modules/.bin/eslint src --ext .js",
+    "lint:fix": "./node_modules/.bin/eslint src --ext .js --fix",
+    "pretest": "npm run lint",
+    "test": "node_modules/jest/bin/jest.js",
+    "test:coverage": "node_modules/jest/bin/jest.js --coverage"
+  },
+  "pre-commit": [
+    "npm run lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.ciklum.net:df2-components/df2-module-skeleton.git"
+  },
+  "author": "Ciklum Solutions JS Team",
+  "license": "ISC",
+  "dependencies": {
+    "regenerator-runtime": "0.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7",
+    "@babel/plugin-proposal-decorators": "^7",
+    "@babel/plugin-proposal-object-rest-spread": "^7",
+    "@babel/plugin-syntax-dynamic-import": "^7",
+    "@babel/plugin-transform-async-to-generator": "^7.2.0",
+    "@babel/polyfill": "^7",
+    "@babel/preset-env": "^7",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "23.6.0",
+    "babel-loader": "8.0.4",
+    "babel-plugin-async-to-promises": "1.0.5",
+    "babel-plugin-module-resolver": "3.1.1",
+    "cross-env": "^5.2.0",
+    "eslint": "5.10.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-import-resolver-babel-module": "5.0.0-beta.1",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-compat": "2.6.3",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "22.1.2",
+    "jest": "23.6.0",
+    "path": "0.12.7",
+    "pre-commit": "1.2.2",
+    "source-map-loader": "^0.2.3",
+    "webpack": "4.28.0",
+    "webpack-cli": "3.1.2"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "./jest.init.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "safari >= 7"
+            ]
+          },
+          "exclude": [
+            "babel-plugin-transform-async-to-generator"
+          ]
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-syntax-dynamic-import",
+      "async-to-promises",
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ]
+        }
+      ]
+    ]
+  }
+}
