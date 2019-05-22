@@ -1,6 +1,6 @@
 {
   "name": "df2-skeleton-module",
-  "version": "0.0.0",
+  "version": "1.1.0",
   "description": "Delivery Flow 2 skeleton module",
   "main": "dist/bundle.js",
   "files": [
@@ -9,6 +9,7 @@
     "package.json"
   ],
   "scripts": {
+    "commit": "git-cz",
     "build:base": "node_modules/webpack/bin/webpack.js --process",
     "clean:dist": "rm -rf ./dist",
     "check": "npm run lint && npm run test && npm run build",
@@ -19,11 +20,10 @@
     "lint:fix": "./node_modules/.bin/eslint src --ext .js --fix",
     "pretest": "npm run lint",
     "test": "node_modules/jest/bin/jest.js",
-    "test:coverage": "node_modules/jest/bin/jest.js --coverage"
+    "test:coverage": "node_modules/jest/bin/jest.js --coverage",
+    "release": "semantic-release"
   },
-  "pre-commit": [
-    "npm run lint"
-  ],
+  "pre-commit": [],
   "repository": {
     "type": "git",
     "url": "git@gitlab.ciklum.net:df2-components/df2-module-skeleton.git"
@@ -42,24 +42,33 @@
     "@babel/plugin-transform-async-to-generator": "^7.2.0",
     "@babel/polyfill": "^7",
     "@babel/preset-env": "^7",
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/gitlab": "^3.1.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
-    "babel-jest": "23.6.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "8.0.4",
     "babel-plugin-async-to-promises": "1.0.5",
     "babel-plugin-module-resolver": "3.1.1",
+    "commitizen": "^3.1.1",
     "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "5.10.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.1",
     "eslint-loader": "2.1.1",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-compat": "2.6.3",
-    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jest": "22.1.2",
-    "jest": "23.6.0",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
     "path": "0.12.7",
     "pre-commit": "1.2.2",
+    "semantic-release": "^15.13.14",
     "source-map-loader": "^0.2.3",
     "webpack": "4.28.0",
     "webpack-cli": "3.1.2"
@@ -68,6 +77,61 @@
     "verbose": true,
     "setupFiles": [
       "./jest.init.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
+  "release": {
+    "tagFormat": "v${version}",
+    "branch": "semantic-relase",
+    "prepare": [
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md",
+          "changelogTitle": "df2-skeleton-module changelog documentation ✏️"
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "package-lock.json",
+            "docs/CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/gitlab",
+        {
+          "gitlabUrl": "https://gitlab.ciklum.net"
+        }
+      ]
     ]
   },
   "babel": {
