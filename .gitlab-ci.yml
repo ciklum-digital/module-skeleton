@@ -3,15 +3,16 @@ before_script:
 - ./devops/ci/scripts/check-free-space.sh
 
 variables:
-  packageName: multa
+  packageName: MODULE_NAME
+  GITLAB_TOKEN: $GITLAB_TOKEN
+  NPM_TOKEN: $NPM_TOKEN
 
 stages:
 - lint
 - test
 - build
-- docs
 - publish
-- bump-version
+- docs
 
 lint:
   stage: lint
@@ -51,26 +52,16 @@ build:
     - dist/
     expire_in: 1h
 
-bump-version:
-  stage: bump-version
-  except:
-    variables:
-    - $CI_COMMIT_TAG =~ /.+/
-    - $CI_COMMIT_MESSAGE =~ /\d+\.\d+\.\d+/
-  only:
-  - master
-  script:
-  - ./devops/ci/scripts/bump-version.job.sh
-  when: manual
-
 publish:
   stage: publish
+  dependencies:
+    - build
   only:
-    variables:
-    - $CI_COMMIT_TAG =~ /\d+\.\d+\.\d+/
+    - master
+  before_script:
+    - npm i --quiet semantic-release
   script:
-  - ./devops/ci/scripts/publish.job.sh
-  when: manual
+    - npm run release
 
 
 pages:
@@ -85,7 +76,7 @@ pages:
     - public
     expire_in: 30 days
   only:
-  - master
+  - semantic-relase
   except:
     variables:
     - $CI_COMMIT_TAG =~ /.+/
