@@ -16,13 +16,13 @@ stages:
 jobs:
   include:
     - stage: "check"
-      name: "lint:check"
+    - name: "lint"
       script: npm run lint
-    - script: npm test
-      name: "test:check"
+    - name: "unit tests"
+      script: npm test
     - stage: build
-      name: "dist:build"
+      name: "build artifacts"
       script: npm run build
     - stage: "release"
-      name: "npm:release"
+      name: "npm release"
       script: npm run release
