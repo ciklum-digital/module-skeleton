@@ -1,8 +1,22 @@
 language: node_js
-node_js:
-  - "10"
+node_js: "10"
+cache: npm
 
-before_script: npm test
+before_install:
+  - npm cache clean --force
+install:
+  - npm ci --quiet
 
-script:
-  - npm run build
+jobs:
+  include:
+    - name: "check"
+      script:
+        - npm run lint
+        - npm test
+    - name: "build"
+      script:
+        - npm run build
+    - name: "release"
+      if: branch = travis
+      script:
+        - npm run release
