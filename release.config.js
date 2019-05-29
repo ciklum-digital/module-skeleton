@@ -2,7 +2,7 @@
 module.exports = {
   // eslint-disable-next-line no-template-curly-in-string
   tagFormat: 'v${version}',
-  branch: 'gitlab-ci-runner-docker',
+  branch: 'travis',
   prepare: [
     [
       '@semantic-release/changelog',
