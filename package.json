@@ -11,7 +11,6 @@
   "scripts": {
     "commit": "npx git-cz",
     "build:base": "npx webpack --process",
-    "prebuild": "npm run clean",
     "build": "npx cross-env NODE_ENV=production npm run build:base",
     "build:dev": "npx cross-env NODE_ENV=development npm run build:base",
     "lint": "npx eslint src --ext .js",
