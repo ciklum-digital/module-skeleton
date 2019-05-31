@@ -8,15 +8,22 @@ env:
 before_install: npm cache clean --force
 install: npm ci --quiet
 
-before_script:
-  - echo $TRAVIS_BRANCH
-  - echo "$TRAVIS_BRANCH"
-
 script:
   - npm run lint
   - npm test
   - npm run build
-  - if [ "$TRAVIS_BRANCH" == "travis"]; then npm run release; fi
+  - if [ "$TRAVIS_BRANCH" == "travis"]; then echo "work!"; fi
+
+#notifications:
+#  slack:
+#    on_success: change
+#    on_failure: always
+#    rooms:
+#      # Generate with
+#      #     travis encrypt "babeljs:<token>#activity" --add notifications.slack.rooms
+#      # where <token> is from the Slack integration settings.
+#      secure: SrwPKRe2AiNAKRo/+2yW/x4zxbWf2FBXuBuuPkdTJVTpWe++Jin1lXYJWTKP1a1i/IbmhffBO9YZcUFbeuXJpRM083vO8VYpyuBMQRqWD+Z3o+ttPlHGOJgnj0nkIcGRk6k7PpyHNnIkixfEJDvbbg9lN1Jswb3xkL8iYIHpuFE=
+
 
 #stages:
 #  - check
