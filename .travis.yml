@@ -7,22 +7,28 @@ before_install:
 install:
   - npm ci --quiet
 
-stages:
-  - check
-  - build
-  - name: release
-    if: branch = travis
+script:
+  - npm run lint
+  - npm test
+  - npm run build
+  - npm run release
 
-jobs:
-  include:
-    - stage: "check"
-    - name: "lint"
-      script: npm run lint
-    - name: "unit tests"
-      script: npm test
-    - stage: build
-      name: "build artifacts"
-      script: npm run build
-    - stage: "release"
-      name: "npm release"
-      script: npm run release
+#stages:
+#  - check
+#  - build
+#  - name: release
+#    if: branch = travis
+#
+#jobs:
+#  include:
+#    - stage: "check"
+#    - name: "lint"
+#      script: npm run lint
+#    - name: "unit tests"
+#      script: npm test
+#    - stage: build
+#      name: "build artifacts"
+#      script: npm run build
+#    - stage: "release"
+#      name: "npm release"
+#      script: npm run release
