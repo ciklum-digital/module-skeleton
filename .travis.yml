@@ -2,6 +2,9 @@ language: node_js
 node_js: "10"
 cache: npm
 
+env:
+  - GITHUB_TOKEN: $GITHUB_TOKEN
+
 before_install: npm cache clean --force
 install: npm ci --quiet
 
