@@ -8,7 +8,7 @@ module.exports = {
       '@semantic-release/changelog',
       {
         changelogFile: 'docs/CHANGELOG.md',
-        changelogTitle: 'df2-skeleton-module changelog documentation ✏️',
+        changelogTitle: 'module-skeleton changelog documentation ✏️',
       },
     ],
     '@semantic-release/npm',
@@ -34,11 +34,6 @@ module.exports = {
         npmPublish: false,
       },
     ],
-    [
-      '@semantic-release/gitlab',
-      {
-        gitlabUrl: 'https://gitlab.ciklum.net',
-      },
-    ],
+    '@semantic-release/github',
   ],
 }

@@ -24,7 +24,7 @@
   "pre-commit": [],
   "repository": {
     "type": "git",
-    "url": "git@gitlab.ciklum.net:df2-components/df2-module-skeleton.git"
+    "url": "https://github.com/ciklum-digital/module-skeleton.git"
   },
   "author": "Ciklum Solutions JS Team",
   "license": "ISC",
@@ -44,7 +44,6 @@
     "@commitlint/config-conventional": "^7.6.0",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
-    "@semantic-release/gitlab": "^3.1.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
