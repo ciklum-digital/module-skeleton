@@ -5,16 +5,17 @@ cache: npm
 env:
   - GITHUB_TOKEN: $GITHUB_TOKEN
 
-#before_install: npm cache clean --force
-#install: npm ci --quiet
-
-install: true
+before_install: npm cache clean --force
+install: npm ci --quiet
 
 script:
-#  - npm run lint
-#  - npm test
-#  - npm run build
-  - if [ "$TRAVIS_BRANCH" == "travis"]; then echo "work!"; else echo "not work!"; fi
+  - npm run lint
+  - npm test
+  - npm run build
+  - |
+    if [[ $TRAVIS_BRANCH == "travis" ]]; then
+      npm run release
+    fi
 
 #notifications:
 #  slack:
