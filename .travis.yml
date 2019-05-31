@@ -12,7 +12,7 @@ script:
   - npm run lint
   - npm test
   - npm run build
-  - npm run release
+  - if [ $TRAVIS_BRANCH == "travis"]; then npm run release fi
 
 #stages:
 #  - check
