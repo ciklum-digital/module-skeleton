@@ -8,6 +8,10 @@ env:
 before_install: npm cache clean --force
 install: npm ci --quiet
 
+before_script:
+  - echo $TRAVIS_BRANCH
+  - echo "$TRAVIS_BRANCH"
+
 script:
   - npm run lint
   - npm test
