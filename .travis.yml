@@ -4,24 +4,23 @@ node_js: "10"
 env:
   - GITHUB_TOKEN: $GITHUB_TOKEN
 
-#install: npm ci --quiet
-
 intall: true
 script: true
 
 stages:
   - test
-  - name: release
-    if: branch = travis
+  - release
 
 jobs:
   include:
     - stage: "test"
+      name: "linting / testing / building"
       script:
         - npm run lint
         - npm run ci:test
         - npm run build
     - stage: "release"
+      if: branch = travis
       script: npm run release
 
 #script:
@@ -46,6 +45,7 @@ jobs:
 
 
 ##option #1
+#intall: true
 #script: true
 #
 #stages:
@@ -66,3 +66,34 @@ jobs:
 #      name: "releasing"
 #      script: npm run release
 
+
+# option #2
+#intall: true
+#script: true
+#
+#stages:
+#  - test
+#  - release
+#
+#jobs:
+#  include:
+#    - stage: "test"
+#      name: "linting / testing / building"
+#      script:
+#        - npm run lint
+#        - npm run ci:test
+#        - npm run build
+#    - stage: "release"
+#      if: branch = travis
+#      script: npm run release
+
+
+
+# option 3
+#install: npm ci --quiet
+
+#script:
+#  - npm run lint
+#  - npm run ci:test
+#  - npm run build
+#  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
