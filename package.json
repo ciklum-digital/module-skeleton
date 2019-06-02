@@ -16,8 +16,7 @@
     "lint": "npx eslint src --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "test": "npx jest",
-    "test:coverage": "npm test -- --coverage",
-    "ci:test": "npm test --  --coverage --coverageReporters=text-lcov | npx coveralls",
+    "ci:test": "npm test | npx coveralls",
     "release": "npx semantic-release",
     "check": "npm run lint && npm test && npm run build",
     "clean": "rimraf dist/ node_modules/"
