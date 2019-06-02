@@ -6,13 +6,29 @@ env:
 
 install: npm ci --quiet
 
-script:
-  - npm run lint
-  - npm run ci:test
-  - npm run build
-  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
+#script:
+#  - npm run lint
+#  - npm run ci:test
+#  - npm run build
+#  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
 
+stages:
+  - test
+  - name: release
+    if: branch = travis
 
+jobs:
+  include:
+    - stage: "test"
+    - name: "linting"
+      script: npm run lint
+    - name: "unit testing"
+      script: npm run ci:test
+    - name: "building"
+      script: npm run build
+    - stage: "release"
+      name: "releasing"
+      script: npm run release
 
 
 
@@ -35,7 +51,7 @@ script:
 #
 #jobs:
 #  include:
-#    - stage: "check"
+#    - stage: "test"
 #    - name: "lint"
 #      script: npm run lint
 #    - name: "test"
