@@ -4,14 +4,12 @@ node_js: "10"
 env:
   - GITHUB_TOKEN: $GITHUB_TOKEN
 
-before_install: npm cache clean --force
 install: npm ci --quiet
 
-before_script:
+script:
   - npm run lint
-  - npm test
-
-script: npm run build
+  - npm run ci:test
+  - npm run build
 
 stages:
   - name: release
@@ -40,7 +38,7 @@ jobs:
 #      #     travis encrypt "babeljs:<token>#activity" --add notifications.slack.rooms
 #      # where <token> is from the Slack integration settings.
 #      secure: SrwPKRe2AiNAKRo/+2yW/x4zxbWf2FBXuBuuPkdTJVTpWe++Jin1lXYJWTKP1a1i/IbmhffBO9YZcUFbeuXJpRM083vO8VYpyuBMQRqWD+Z3o+ttPlHGOJgnj0nkIcGRk6k7PpyHNnIkixfEJDvbbg9lN1Jswb3xkL8iYIHpuFE=
-
+# https://github.com/juliuscc/semantic-release-slack-bot
 #  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
 
 #stages:

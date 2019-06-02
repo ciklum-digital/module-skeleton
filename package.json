@@ -17,6 +17,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "npx jest",
     "test:coverage": "npm test -- --coverage",
+    "ci:test": "npm test --  --coverage --coverageReporters=text-lcov | npm coveralls",
     "release": "npx semantic-release",
     "check": "npm run lint && npm test && npm run build",
     "clean": "rimraf dist/ node_modules/"
@@ -51,6 +52,7 @@
     "babel-plugin-async-to-promises": "1.0.5",
     "babel-plugin-module-resolver": "3.1.1",
     "commitizen": "^3.1.1",
+    "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "5.10.0",
