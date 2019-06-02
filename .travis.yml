@@ -1,6 +1,5 @@
 language: node_js
 node_js: "10"
-cache: npm
 
 env:
   - GITHUB_TOKEN: $GITHUB_TOKEN
@@ -8,12 +7,11 @@ env:
 before_install: npm cache clean --force
 install: npm ci --quiet
 
-script:
+before_script:
   - npm run lint
   - npm test
-  - npm run build
-#  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
 
+script: npm run build
 
 stages:
   - name: release
@@ -43,6 +41,7 @@ jobs:
 #      # where <token> is from the Slack integration settings.
 #      secure: SrwPKRe2AiNAKRo/+2yW/x4zxbWf2FBXuBuuPkdTJVTpWe++Jin1lXYJWTKP1a1i/IbmhffBO9YZcUFbeuXJpRM083vO8VYpyuBMQRqWD+Z3o+ttPlHGOJgnj0nkIcGRk6k7PpyHNnIkixfEJDvbbg9lN1Jswb3xkL8iYIHpuFE=
 
+#  - if [[ $TRAVIS_BRANCH == "travis" ]]; then npm run release; fi
 
 #stages:
 #  - check
