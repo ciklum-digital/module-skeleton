@@ -1,7 +1,7 @@
 module.exports = {
   // eslint-disable-next-line no-template-curly-in-string
   tagFormat: 'v${version}',
-  branch: 'travis',
+  branch: 'master',
   prepare: [
     [
       '@semantic-release/changelog',

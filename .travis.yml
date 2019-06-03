@@ -20,5 +20,5 @@ jobs:
         - npm run test:ci
         - npm run build
     - stage: "release"
-      if: branch = travis
+      if: branch = master
       script: npm run release
