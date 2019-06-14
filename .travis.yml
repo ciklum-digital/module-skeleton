@@ -7,6 +7,12 @@ env:
 intall: true
 script: true
 
+addons:
+  sonarcloud:
+    organization: ciklum-digital
+    token:
+      secure: $SONAR_TOKEN
+
 stages:
   - test
   - release
@@ -18,6 +24,7 @@ jobs:
       script:
         - npm run lint
         - npm run test:ci
+        - sonar-scanner
         - npm run build
     - stage: "release"
       if: branch = master
