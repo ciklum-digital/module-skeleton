@@ -1,13 +1,12 @@
 
 
-# module skeleton
+# delivery flow
 
-> Start your module from skeleton
+> Start your development from here
 
 - 🚀 Easy start
 - ⚡️️ Rich set up
-- 💎 Best practice support
-- ⏱ Slow Down or Speed Up Time
+- 💎 Best practice
 
 <div style="" class="buttons">
   <a href="#/README"><span>Get Started</span></a>

@@ -1,24 +1,39 @@
 language: node_js
 node_js: "10"
 
-env:
-  - GITHUB_TOKEN: $GITHUB_TOKEN
+install:
+  - npm ci
 
-intall: true
-script: true
+script:
+  - npm run lint
+  - npm run test:ci
+  - npm run build
 
-stages:
-  - test
-  - release
+deploy:
+  provider: script
+  script: npm run release
+  on:
+    branch: master
 
-jobs:
-  include:
-    - stage: "test"
-      name: "linting | testing | building"
-      script:
-        - npm run lint
-        - npm run test:ci
-        - npm run build
-    - stage: "release"
-      if: branch = master
-      script: npm run release
+
+#env:
+#  - GITHUB_TOKEN: $GITHUB_TOKEN
+#
+#intall: true
+#script: true
+#
+#stages:
+#  - test
+#  - release
+#
+#jobs:
+#  include:
+#    - stage: "test"
+#      name: "linting | testing | building"
+#      script:
+#        - npm run lint
+#        - npm run test:ci
+#        - npm run build
+#    - stage: "release"
+#      if: branch = master
+#      script: npm run release
