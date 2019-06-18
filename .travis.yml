@@ -1,11 +1,8 @@
 language: node_js
 node_js: "10"
 
-env:
-  - GITHUB_TOKEN: $GITHUB_TOKEN
-
-intall: true
-script: true
+install:
+  - npm ci
 
 addons:
   sonarcloud:
@@ -13,19 +10,38 @@ addons:
     token:
       secure: $SONAR_TOKEN
 
-stages:
-  - test
-  - release
+script:
+  - npm run lint
+  - npm run test:ci
+  - sonar-scanner
+  - npm run build
 
-jobs:
-  include:
-    - stage: "test"
-      name: "linting | testing | building"
-      script:
-        - npm run lint
-        - npm run test:ci
-        - sonar-scanner
-        - npm run build
-    - stage: "release"
-      if: branch = master
-      script: npm run release
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run release
+  on:
+    branch: master
+
+
+#env:
+#  - GITHUB_TOKEN: $GITHUB_TOKEN
+#
+#intall: true
+#script: true
+#
+#stages:
+#  - test
+#  - release
+#
+#jobs:
+#  include:
+#    - stage: "test"
+#      name: "linting | testing | building"
+#      script:
+#        - npm run lint
+#        - npm run test:ci
+#        - npm run build
+#    - stage: "release"
+#      if: branch = master
+#      script: npm run release
