@@ -11,8 +11,8 @@
 > Start your module here
 
 - 🚀 Easy start with new module
-- ⚡️️ Rich module set up
-- 💎 Best practice
+- ⚡️️ Rich module set up configuration
+- 💎 Best practices support
 
 <div class="buttons">
   <a href="https://github.com/ciklum-digital/module-skeleton" target="_blank"><span>GitHub</span></a>
