@@ -1,12 +1,10 @@
 <p align="center">
-    <a href="https://ciklum-digital.github.io/xmess/">
-        <img width="128" src="https://ciklum-digital.github.io/module-skeleton/assets/images/icon.svg" alt="module skeleton icon">
+    <a href="https://ciklum-digital.github.io/module-skeleton/">
+        <img width="96" src="https://ciklum-digital.github.io/module-skeleton/assets/images/icon.svg" alt="module skeleton icon">
     </a>    
 </p>
-<h1 class="label">
-  module skeleton
-</h1>
-<h3 align="center">Start your module here</h3>
+
+<p align="center">Start your module here</h3>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/module-skeleton">
