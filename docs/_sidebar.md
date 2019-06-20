@@ -1,8 +1,5 @@
-- Getting Started
-  - [Example](started/example.md)
-  
+- Getting started
+
+- [Code of conduct](CODE_OF_CONDUCT.md)
 - [Changelog](CHANGELOG.md)
-
-
-
-
+- [Contributing](CONTRIBUTING.md)

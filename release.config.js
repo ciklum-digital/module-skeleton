@@ -6,7 +6,7 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'docs/CHANGELOG.md',
+        changelogFile: 'CHANGELOG.md',
         changelogTitle: 'module-skeleton changelog documentation ✏️',
       },
     ],
@@ -17,7 +17,7 @@ module.exports = {
         assets: [
           'package.json',
           'package-lock.json',
-          'docs/CHANGELOG.md',
+          'CHANGELOG.md',
         ],
         // eslint-disable-next-line no-template-curly-in-string
         message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
