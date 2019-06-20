@@ -182,8 +182,12 @@ section.cover.show ~ .sidebar-toggle {
 
 .sidebar ul li a {
     font-size: 15px;
-    font-weight: 700;
+    color: var(--text-color-base);
     display: inline;
+}
+
+.sidebar ul li.active>a {
+    border: none;
 }
 
 .sidebar ul li a:hover {

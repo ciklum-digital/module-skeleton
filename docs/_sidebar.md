@@ -1,5 +1,4 @@
-- Getting started
-
+- [Getting started](README.md)
 - [Code of conduct](CODE_OF_CONDUCT.md)
 - [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md)
