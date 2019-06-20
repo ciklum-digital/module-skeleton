@@ -4,9 +4,16 @@ node_js: "10"
 install:
   - npm ci
 
+addons:
+  sonarcloud:
+    organization: ciklum-digital
+    token:
+      secure: $SONAR_TOKEN
+
 script:
   - npm run lint
   - npm run test:ci
+  - sonar-scanner
   - npm run build
 
 deploy:
