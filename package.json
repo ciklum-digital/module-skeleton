@@ -19,6 +19,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "npx jest",
     "test:ci": "npm test | npx coveralls",
+    "sonar": "npx sonar-scanner",
     "link": "npx lerna link",
     "bootstrap": "npx lerna bootstrap",
     "publish": "npx lerna publish",
