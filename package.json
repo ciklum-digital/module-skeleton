@@ -1,7 +1,9 @@
 {
-  "name": "df2-skeleton-module",
-  "version": "1.1.0",
-  "description": "Delivery Flow 2 skeleton module",
+  "name": "module-skeleton",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["packages/*"],
+  "description": "Module skeleton | Start your module here",
   "main": "dist/bundle.js",
   "files": [
     "dist",
@@ -18,6 +20,9 @@
     "test": "npx jest",
     "test:ci": "npm test | npx coveralls",
     "release": "npx semantic-release",
+    "link": "npx lerna link",
+    "bootstrap": "npx lerna bootstrap",
+    "publish": "npx lerna publish",
     "clean": "rimraf dist/ node_modules/"
   },
   "pre-commit": [],
@@ -41,8 +46,8 @@
     "@babel/preset-env": "^7",
     "@commitlint/cli": "^7.6.1",
     "@commitlint/config-conventional": "^7.6.0",
-    "@semantic-release/changelog": "^3.0.2",
-    "@semantic-release/git": "^7.0.8",
+    "lerna": "3.14.1",
+    "lerna-changelog": "^0.8.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
@@ -66,7 +71,6 @@
     "npx": "^10.2.0",
     "path": "0.12.7",
     "rimraf": "^2.6.3",
-    "semantic-release": "^15.13.14",
     "source-map-loader": "^0.2.3",
     "webpack": "4.28.0",
     "webpack-cli": "3.1.2"
