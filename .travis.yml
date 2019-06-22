@@ -17,17 +17,17 @@ addons:
       secure: $SONAR_TOKEN
 
 script:
-  - npm run build
-  - npm run lint
-  - sonar-scanner
-  - npm run test:ci
+  - yarn run build
+  - yarn run lint
+  - yarn run sonar
+  - yarn run test:ci
 
 before_deploy:
   - git checkout ${TRAVIS_BRANCH}
 
 deploy:
   provider: script
-  script: npm run publish
+  script: yarn run publish
   skip_cleanup: true
   on:
     branch: master
@@ -50,14 +50,14 @@ deploy:
 #      secure: $SONAR_TOKEN
 #
 #script:
-#  - npm run lint
-#  - npm run test:ci
-#  - sonar-scanner
-#  - npm run build
+#  - yarn run lint
+#  - yarn run test:ci
+#  - yarn run sonar
+#  - yarn run build
 #
 #deploy:
 #  provider: script
 #  skip_cleanup: true
-#  script: npm run release
+#  script: yarn run release
 #  on:
 #    branch: master
