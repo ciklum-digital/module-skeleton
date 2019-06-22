@@ -8,7 +8,7 @@ We have adopted a [Code of Conduct](https://github.com/ciklum-digital/module-ske
 
 ## Open Development
 
-All work on Ant Design happens directly on [GitHub](https://github.com/ciklum-digital). Both core team members and external contributors send pull requests which go through the same review process.
+All work happens directly on [GitHub](https://github.com/ciklum-digital). Both core team members and external contributors send pull requests which go through the same review process.
 
 ## Branch Organization
 
@@ -37,7 +37,7 @@ The core team is monitoring for pull requests. We will review your pull request 
 1. Ensure the code lints passes. Run `npm run lint` for check it.
 1. We are using commitizen and commit lint. Use `npm run commit` for prompting commit message window.
 1. Submit a pull request, referencing any issues it addresses.
-1. For PR creation use [pr template]([template](https://github.com/ciklum-digital/module-skeleton/tree/master/.github/PULL_REQUEST_TEMPLATE.md))
+1. For PR creation use [template]([template](https://github.com/ciklum-digital/module-skeleton/tree/master/.github/PULL_REQUEST_TEMPLATE.md))
 
 ## Development Workflow
 
