@@ -14,8 +14,6 @@
     "lint:fix": "yarn lint --fix",
     "test": "npx jest",
     "build": "npx lerna run build",
-    "lerna:link": "npx lerna link",
-    "lerna:bootstrap": "npx lerna bootstrap",
     "ci:lint": "yarn lint",
     "ci:test": "yarn test | npx coveralls",
     "ci:sonar": "npx sonar-scanner",
@@ -45,12 +43,9 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
     }
   },
   "bugs": {

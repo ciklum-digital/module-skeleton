@@ -17,17 +17,17 @@ install:
   - yarn
 
 script:
-  - yarn build
-  - yarn lint
-  - yarn sonar
-  - yarn test:ci
+  - yarn ci:lint
+  - yarn ci:test
+  - yarn ci:sonar
+  - yarn ci:build
 
 before_deploy:
   - git checkout ${TRAVIS_BRANCH}
 
 deploy:
   provider: script
-  script: yarn publish
+  script: yarn ci:publish
   skip_cleanup: true
   on:
     branch: master
