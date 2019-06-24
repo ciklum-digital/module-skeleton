@@ -1,80 +1,47 @@
 {
   "name": "module-skeleton",
-  "private": true,
-  "version": "0.1.0",
-  "workspaces": ["packages/*"],
   "description": "Module skeleton | Start your module here",
-  "main": "dist/bundle.js",
-  "files": [
-    "dist",
-    "README.md",
-    "package.json"
-  ],
-  "scripts": {
-    "commit": "npx git-cz",
-    "build:base": "npx webpack --process",
-    "build": "npx cross-env NODE_ENV=production npm run build:base",
-    "build:dev": "npx cross-env NODE_ENV=development npm run build:base",
-    "lint": "npx eslint src --ext .js",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "npx jest",
-    "test:ci": "npm test | npx coveralls",
-    "sonar": "npx sonar-scanner",
-    "link": "npx lerna link",
-    "bootstrap": "npx lerna bootstrap",
-    "publish": "npx lerna publish",
-    "clean": "rimraf dist/ node_modules/"
-  },
-  "pre-commit": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ciklum-digital/module-skeleton.git"
-  },
+  "version": "0.1.0",
   "author": "Ciklum Digital / JS Team",
   "license": "MIT",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "homepage": "https://github.com/ciklum-digital/module-skeleton#readme",
+  "main": "lerna.json",
+  "scripts": {
+    "commit": "npx git-cz",
+    "lint": "npx tslint packages/**/*.ts --project ./tsconfig.json",
+    "lint:fix": "yarn lint --fix",
+    "test": "npx jest",
+    "build": "npx lerna run build",
+    "lerna:link": "npx lerna link",
+    "lerna:bootstrap": "npx lerna bootstrap",
+    "ci:lint": "yarn lint",
+    "ci:test": "yarn test | npx coveralls",
+    "ci:sonar": "npx sonar-scanner",
+    "ci:build": "yarn build",
+    "ci:publish": "npx lerna publish"
+  },
   "dependencies": {
-    "regenerator-runtime": "0.13.1"
+    "typescript": "3.4.5"
   },
   "devDependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7",
-    "@babel/plugin-proposal-decorators": "^7",
-    "@babel/plugin-proposal-object-rest-spread": "^7",
-    "@babel/plugin-syntax-dynamic-import": "^7",
-    "@babel/plugin-transform-async-to-generator": "^7.2.0",
-    "@babel/polyfill": "^7",
-    "@babel/preset-env": "^7",
-    "@commitlint/cli": "^7.6.1",
-    "@commitlint/config-conventional": "^7.6.0",
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "@types/jest": "24.0.13",
+    "commitizen": "3.1.1",
+    "coveralls": "3.0.4",
+    "husky": "2.4.0",
+    "jest": "24.8.0",
     "lerna": "3.14.1",
-    "lerna-changelog": "^0.8.2",
+    "lerna-changelog": "0.8.2",
+    "npx": "10.2.0",
     "sonar-scanner": "3.1.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "10.0.1",
-    "babel-jest": "^24.8.0",
-    "babel-loader": "8.0.4",
-    "babel-plugin-async-to-promises": "1.0.5",
-    "babel-plugin-module-resolver": "3.1.1",
-    "commitizen": "^3.1.1",
-    "coveralls": "^3.0.3",
-    "cross-env": "^5.2.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "5.10.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-import-resolver-babel-module": "5.0.0-beta.1",
-    "eslint-loader": "2.1.1",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-compat": "2.6.3",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jest": "22.1.2",
-    "husky": "^2.3.0",
-    "jest": "^24.8.0",
-    "npx": "^10.2.0",
-    "path": "0.12.7",
-    "rimraf": "^2.6.3",
-    "source-map-loader": "^0.2.3",
-    "webpack": "4.28.0",
-    "webpack-cli": "3.1.2"
+    "ts-jest": "24.0.2",
+    "tslint": "5.16.0",
+    "tslint-config-airbnb": "5.11.1",
+    "tslint-origin-ordered-imports-rule": "1.2.2",
+    "tslint-sonarts": "1.9.0"
   },
   "husky": {
     "hooks": {
@@ -86,8 +53,7 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "tag": "latest"
+  "bugs": {
+    "url": "https://github.com/ciklum-digital/module-skeleton/issues"
   }
 }
