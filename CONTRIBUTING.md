@@ -41,11 +41,11 @@ The core team is monitoring for pull requests. We will review your pull request 
 
 ## Development Workflow
 
-After cloning proper module, run `npm install` to fetch its dependencies. Then, you can run several commands:
+After cloning proper module, run `yarn` to fetch its dependencies. Then, you can run several commands:
 
-1. `npm run lint` checks the code style.
-1. `npm test` runs the complete test suite.
-1. `npm run build` compiles TypeScript code to the `dist` directory.
+1. `yarn lint` checks the code style and `yarn lint:fix` for fixing linting errors
+1. `yarn test` runs the complete test suite.
+1. `yarn build` compiles TypeScript code to the `dist` directory.
 
 ## License
 
