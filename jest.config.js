@@ -1,11 +1,6 @@
 module.exports = {
-  displayName: 'module-skeleton',
-  setupFilesAfterEnv: [
-    '<rootDir>/jest.init.js',
-  ],
-  testMatch: [
-    '<rootDir>/src/**/*(*.)@(spec|test).[tj]s',
-  ],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   collectCoverage: true,
   coverageReporters: [
     'text',
@@ -15,11 +10,15 @@ module.exports = {
   ],
   coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: [
-    // included
-    '**/src/**/*.{js,ts}',
-
-    // excluded
-    '!**/src/**/*.{mock,index}.{js,ts}',
-    '!**/node_modules/**',
+    '**/*.ts',
+    '!**/dist/**',
+    '!**/playground/**',
   ],
-}
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/playground/',
+  ],
+  testMatch: [
+    '**/src/**/*.spec.ts',
+  ],
+};
