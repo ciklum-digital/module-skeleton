@@ -12,10 +12,10 @@ All work happens directly on [GitHub](https://github.com/ciklum-digital). Both c
 
 ## Branch Organization
 
-There are three types of branch we maintain: `master` `fix/*` `feature/*`.
+There are three types of branch we maintain: `master` `issue/*` `feat/*`.
  
-- If you send a Fix Request, please do it in: `fix/short-issue-description`
-- If you send a Feature Request, please do it in: `feature/short-feature-description`
+- If you send a Fix Request, please do it in: `issue/short-issue-title`
+- If you send a Feature Request, please do it in: `feat/short-feature-title`
 
 ## Reporting bugs and questions
 
@@ -29,13 +29,14 @@ The core team is monitoring for pull requests. We will review your pull request 
 
 **Before submitting a pull request**, please make sure the following is done:
 
+1. Before you reporting a bug, please make sure you've searched exists issues.
 1. Open a new issue in the [issues tracker](https://github.com/ciklum-digital/module-skeleton/issues)
 1. Fork the repository and create your branch from [proper branch](#Branch-Organization).
-1. Run `npm install` in the repository root.
+1. Run `yarn install` in the repository root.
 1. If you've fixed a bug or added code that should be tested, add tests!
-1. Ensure the test suite passes (npm run test). Tip: `npm test -- --watch TestName` is helpful in development.
-1. Ensure the code lints passes. Run `npm run lint` for check it.
-1. We are using commitizen and commit lint. Use `npm run commit` for prompting commit message window.
+1. Ensure the test suite passes (yarn test). Tip: `yarn test -- --watch TestName` is helpful in development.
+1. Ensure the code lints passes. Run `yarn lint` for check it.
+1. We are using commitizen and commit lint. Use `yarn commit` for prompting commit message window.
 1. Submit a pull request, referencing any issues it addresses.
 1. For PR creation use [template]([template](https://github.com/ciklum-digital/module-skeleton/tree/master/.github/PULL_REQUEST_TEMPLATE.md))
 

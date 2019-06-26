@@ -1,11 +1,11 @@
 language: node_js
-node_js: "10"
+node_js: "12"
 cache:
   yarn: true
 
 before_install:
   - git remote set-url origin "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-  - npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+  - yarn config set registry //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 
 install:
   - yarn
@@ -31,33 +31,3 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-
-
-
-## semantic release
-#language: node_js
-#node_js: "10"
-#cache:
-#  yarn: true
-#
-#install:
-#  - yarn
-#
-#addons:
-#  sonarcloud:
-#    organization: ciklum-digital
-#    token:
-#      secure: $SONAR_TOKEN
-#
-#script:
-#  - yarn run lint
-#  - yarn run test:ci
-#  - yarn run sonar
-#  - yarn run build
-#
-#deploy:
-#  provider: script
-#  skip_cleanup: true
-#  script: yarn run release
-#  on:
-#    branch: master
