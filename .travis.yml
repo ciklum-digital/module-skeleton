@@ -18,7 +18,7 @@ install:
 script:
   - yarn ci:lint
   - yarn ci:test
-  - sonar-scanner -D sonar.host.url=$SONAR_HOST_URL -X
+  - yarn ci:sonar -D sonar.host.url=$SONAR_HOST_URL -X
   - yarn ci:build
 
 before_deploy:
