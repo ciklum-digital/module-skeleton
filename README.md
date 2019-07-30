@@ -134,3 +134,7 @@ window.$docsify = {
 [there the place for EXAMPLES dateils..]    
 
 [please fill it for your module]   
+
+## Contacts
+
+Any questions?, conduct us directly via [Slack](https://ciklum-oss.slack.com/messages/CLXQ7R9BR)
